@@ -1,0 +1,26 @@
+.App {
+  z-index: 2147483647 !important;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--main-bm-container-font);
+}
+
+.webchat {
+  background-color: #ffffff;
+  z-index: 2147483000;
+  box-sizing: border-box;
+  width: 400px;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 85px;
+  margin-right: 25px;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+.minimizado {
+  height: 0px;
+}

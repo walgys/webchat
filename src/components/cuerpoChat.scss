@@ -1,0 +1,10 @@
+.cuerpo-chat {
+    height: calc(60vh);
+    max-height: 500px;
+    padding: 10px 0px 10px 0px;
+    overflow: hidden;
+}
+
+.lista-chat::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}

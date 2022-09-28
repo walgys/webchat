@@ -34,36 +34,8 @@ const Login = () => {
 
         <div style={{display: 'flex', justifyContent: 'space-between' ,flexDirection: 'column', width: '25vw', alignContent: 'center', margin: '2rem'}}>
         <Typography textAlign={'center'}>
-                Ingrese su usuario y contraseña
+                Ingrese Con Google
               </Typography>
-
-              <TextField
-                variant="standard"
-                label="Usuario"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                sx={{ alignSelf: 'center' }}
-                />
-              <TextField
-                variant="standard"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                label="Contraseña"
-                sx={{ alignSelf: 'center' }}
-              />
-              <Button
-                sx={{
-                  width: '100%',
-                  maxWidth: '200px',
-                  alignSelf: 'center',
-                  margin: '1rem 0px 1rem 0px',
-                }}
-                variant="contained"
-                onClick={() => doLogin()}
-              >
-                Ingresar
-              </Button>
               <Divider />
               <Button
                 variant="contained"
@@ -79,16 +51,6 @@ const Login = () => {
               >
                 <GoogleIcon />
                 oogle
-              </Button>
-              <Typography textAlign={'center'}>
-                Si no tiene cuenta
-              </Typography>
-              <Button
-                onClick={() => navigate('/register')}
-                sx={{ width: '100%', maxWidth: '200px', alignSelf: 'center', marginTop: '1rem' }}
-                variant="outlined"
-                >
-                Regístrese
               </Button>
             </div>
                   </Paper>

@@ -23,6 +23,10 @@ const PieChat = (props) => {
     administradorConexion.enviarMensaje(sesion.id, message, user);
     setTextoEnviar('');
   };
+
+  const handleKeyDown = (e) =>{
+    if(e.key === 'Enter') enviarMensaje();
+  }
   return (
     <div className="piechat-contenedor">
       <IconButton aria-label="smileys">
@@ -33,6 +37,7 @@ const PieChat = (props) => {
         placeholder="Escriba aqui..."
         inputProps={{ 'aria-label': 'escriba aqui' }}
         onChange={(e) => setTextoEnviar(e.target.value)}
+        onKeyDown={e=>handleKeyDown(e)}
         value={textoEnviar}
       />
       <IconButton>

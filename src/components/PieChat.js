@@ -81,14 +81,14 @@ const PieChat = (props) => {
         value={textoEnviar}
       />
       <IconButton>
-        <AttachFileIcon onClick={closeModal} />
+        <AttachFileIcon onClick={() => setAttachModal(true)} />
       </IconButton>
       <IconButton onClick={enviarMensaje}>
         <SendIcon />
       </IconButton>
       <Modal
         open={attachModal}
-        onClose={() => setAttachModal(false)}
+        onClose={closeModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

@@ -9,7 +9,7 @@ import './mensajeRecibido.scss';
 import React from 'react';
 
 const MensajeRecibido = (props) => {
-  const { nombreAvatar, avatarURL, texto, hora, systemMessage} = props;
+  const { nombreAvatar, avatarURL, texto, hora, systemMessage, type} = props;
   console.log(avatarURL)
   return (systemMessage ? <ListItem sx={{ alignItems: 'flex-start' }}>
   <div style={{ display: 'flex' }}>
@@ -90,7 +90,7 @@ const MensajeRecibido = (props) => {
                     fontSize: '9pt',
                   }}
                 >
-                  {texto.replaceAll('\\n', '\n')}
+                  {type === 'url' ? <a style={{color: 'black'}} href={texto}>{texto}</a> : texto.replaceAll('\\n', '\n')}
                 </Typography>
               </div>
             }

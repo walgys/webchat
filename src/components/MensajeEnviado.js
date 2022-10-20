@@ -9,7 +9,8 @@ import './mensajeEnviado.scss';
 import React from 'react';
 
 const MensajeEnviado = (props) => {
-  const { texto, hora, estado } = props;
+  const { texto, hora, estado, type } = props;
+  console.log(type)
   const colorEstado = {
     enviado: '#F2F2F7',
     recibido: '#65fbf4',
@@ -38,7 +39,7 @@ const MensajeEnviado = (props) => {
                 align="left"
                 sx={{ color: 'white', fontSize: '9pt', whiteSpace: 'pre-line' }}
               >
-                {texto.replaceAll('\\n', '\n')}
+                {type === 'url' ? <a style={{color: 'white'}} href={texto}>{texto}</a> : texto.replaceAll('\\n', '\n')}
               </Typography>
               <div
                 style={{

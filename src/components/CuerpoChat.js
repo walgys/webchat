@@ -43,15 +43,17 @@ const CuerpoChat = (props) => {
                 {moment(sesion?.fecha).format('DD/MM/YYYY hh:mm:ss A')}
               </Typography>
               {sesion?.mensajes?.map((mensaje, indice) => {
+                console.log(mensaje)
                 if (mensaje.origen !== user.uid) {
                     let fromUser = sesion.users.find(sesionUser=>sesionUser.userId === mensaje.origen);
-
+                    
                     return (
                       <MensajeRecibido
                         key={mensaje.id}
                         systemMessage={mensaje.origen === 'system'} 
                         nombreAvatar={fromUser?.userName || 'desconocido'}
                         avatarURL={fromUser?.avatarURL === 'baseAvatar' ? null : fromUser?.avatarURL}
+                        type={mensaje.cuerpo.type || ''}
                         texto={mensaje.cuerpo?.texto}
                         hora={moment
                           .unix(mensaje.fecha._seconds)
@@ -63,6 +65,7 @@ const CuerpoChat = (props) => {
                     <MensajeEnviado
                       key={mensaje.id}
                       texto={mensaje.cuerpo?.texto}
+                      type={mensaje.cuerpo?.type || ''}
                       hora={moment
                         .unix(mensaje.fecha._seconds)
                         .format('hh:mm A')}

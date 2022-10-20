@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { signOut } from 'firebase/auth';
+import { signOut, deleteUser, reauthenticateWithCredential, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../utilitarios/fb';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
@@ -41,6 +41,19 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const doDeleteUser = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    reauthenticateWithCredential(auth.currentUser, credential)
+
+    deleteUser(auth.currentUser).then(()=>{
+      handleClose();
+      navigate('/');
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
   const exitRoom = () => {
     administradorConexion.exitChatRoom(sesion.id, user);
@@ -105,6 +118,7 @@ export default function Header() {
           onClose={handleClose}
         >
           <MenuItem onClick={() => doSignOut()}>Logout</MenuItem>
+          <MenuItem onClick={() => doDeleteUser()}>Delete Account</MenuItem>
         </Menu>
       </AppBar>
     </Box>
